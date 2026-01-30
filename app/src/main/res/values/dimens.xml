@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+        Responsive Text Sizing for Splash Screen
+        Scales proportionally with screen size while maintaining design ratios
+    -->
+    
+    <!-- Title text size - scales from 60sp to 120sp based on screen size -->
+    <dimen name="title_text_size">60sp</dimen>
+    
+    <!-- Tagline text size - scales from 28sp to 56sp based on screen size -->
+    <dimen name="tagline_text_size">28sp</dimen>
+    
+    <!-- Continue button text size - scales from 18sp to 36sp based on screen size -->
+    <dimen name="continue_text_size">18sp</dimen>
+    
+</resources>

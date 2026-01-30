@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Splash Screen Layout - Responsive Design that fills device screen
+    Background: Light blue (#B5D8E7) with vector_3 overlay
+    Logo: Centered blue_1 asset (proportional sizing)
+    Title: "BLUE LEDGER" - Koulen Bold, proportional sizing
+    Tagline: "minting a better future" - La Belle Aurore Regular, proportional sizing
+    Continue: Bottom-right with circular button and arrow
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="#B5D8E7">
+
+    <!-- Background vector pattern - fills screen with elevation for depth -->
+    <View
+        android:id="@+id/vector_3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/vector_3"
+        android:scaleType="centerCrop"
+        android:elevation="14.66dp" />
+
+    <!-- Central logo - positioned exactly center of screen with proportional sizing -->
+    <View
+        android:id="@+id/blue_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/blue_1"
+        android:minWidth="200dp"
+        android:minHeight="180dp"
+        android:maxWidth="425dp"
+        android:maxHeight="380dp" />
+
+    <!-- Main title "BLUE LEDGER" - positioned below logo with proportional margins -->
+    <TextView
+        android:id="@+id/blue_ledger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/blue_1"
+        android:layout_marginTop="32dp"
+        android:text="@string/blue_ledger"
+        android:textAppearance="@style/blue_ledger"
+        android:gravity="center"
+        android:maxWidth="400dp"
+        android:maxLines="1" />
+
+    <!-- Tagline "minting a better future" - positioned below title -->
+    <TextView
+        android:id="@+id/minting_a_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/blue_ledger"
+        android:layout_marginTop="16dp"
+        android:text="@string/minting_a_b"
+        android:textAppearance="@style/minting_a_b"
+        android:gravity="center"
+        android:maxWidth="350dp"
+        android:maxLines="2" />
+
+    <!-- Continue button group - positioned bottom-right with proportional sizing -->
+    <RelativeLayout
+        android:id="@+id/continue_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="48dp">
+
+        <!-- Continue text - positioned left of circular button -->
+        <TextView
+            android:id="@+id/continue_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:text="@string/continue_text"
+            android:textAppearance="@style/continue_text_style"
+            android:gravity="center_vertical"
+            android:minWidth="80dp" />
+
+        <!-- Circular button background - dark blue circle with proportional sizing -->
+        <View
+            android:id="@+id/ellipse_24"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ellipse_24" />
+
+        <!-- Arrow icon - positioned inside circular button -->
+        <ImageView
+            android:id="@+id/arrow_up_02"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/arrow_up_02"
+            android:contentDescription="Continue Arrow" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

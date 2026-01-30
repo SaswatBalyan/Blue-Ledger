@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+        Responsive Text Sizing for Splash Screen - Large Tablet (720dp+)
+        Largest text sizes for large tablet screens
+    -->
+    
+    <!-- Title text size - largest for large tablets -->
+    <dimen name="title_text_size">100sp</dimen>
+    
+    <!-- Tagline text size - largest for large tablets -->
+    <dimen name="tagline_text_size">48sp</dimen>
+    
+    <!-- Continue button text size - largest for large tablets -->
+    <dimen name="continue_text_size">30sp</dimen>
+    
+</resources>

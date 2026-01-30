@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="49dp"
+    android:height="29dp"
+    android:viewportWidth="49"
+    android:viewportHeight="29">
+
+    <!-- From SVG rect: <rect width="27.44" height="27.44" transform="matrix(0 -1 -1 0 48.0244 28.3)" fill="#2C5262"/> -->
+    <!-- The matrix transformation is approximated by calculating transformed coordinates for the path. -->
+    <path
+        android:fillColor="#2C5262"
+        android:pathData="M48.0244,28.3 L48.0244,0.86 L20.5844,0.86 L20.5844,28.3 Z"/>
+
+    <!-- From SVG path: <path d="M42.5366 14.58H15.0966" stroke="white" stroke-width="3.9215" stroke-linecap="square" stroke-linejoin="round"/> -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.9215"
+        android:strokeLineCap="square"
+        android:strokeLineJoin="round"
+        android:pathData="M42.5366,14.58 H15.0966"/>
+
+    <!-- From SVG path: <path d="M2.74805 16.5408C1.66516 16.5408 0.787299 15.6629 0.787299 14.58C0.787299 13.4971 1.66516 12.6193 2.74805 12.6193V14.58V16.5408ZM13.724 12.6193H15.6848V16.5408H13.724V14.58V12.6193ZM2.74805 14.58V12.6193L13.724 12.6193V14.58V16.5408L2.74805 16.5408V14.58Z" fill="#2C5262"/> -->
+    <path
+        android:fillColor="#2C5262"
+        android:pathData="M2.74805,16.5408C1.66516,16.5408 0.787299,15.6629 0.787299,14.58C0.787299,13.4971 1.66516,12.6193 2.74805,12.6193V14.58V16.5408ZM13.724,12.6193H15.6848V16.5408H13.724V14.58V12.6193ZM2.74805,14.58V12.6193L13.724,12.6193V14.58V16.5408L2.74805,16.5408V14.58Z"/>
+
+    <!-- From SVG path (duplicate of above in original SVG): <path d="M2.74805 16.5408C1.66516 16.5408 0.787299 15.6629 0.787299 14.58C0.787299 13.4971 1.66516 12.6193 2.74805 12.6193V14.58V16.5408ZM13.724 12.6193H15.6848V16.5408H13.724V14.58V12.6193ZM2.74805 14.58V12.6193L13.724 12.6193V14.58V16.5408L2.74805 16.5408V14.58Z" fill="#2C5262"/> -->
+    <path
+        android:fillColor="#2C5262"
+        android:pathData="M2.74805,16.5408C1.66516,16.5408 0.787299,15.6629 0.787299,14.58C0.787299,13.4971 1.66516,12.6193 2.74805,12.6193V14.58V16.5408ZM13.724,12.6193H15.6848V16.5408H13.724V14.58V12.6193ZM2.74805,14.58V12.6193L13.724,12.6193V14.58V16.5408L2.74805,16.5408V14.58Z"/>
+
+    <!-- From SVG path: <path d="M37.7346 8.86362C37.7346 8.86362 43.4512 13.0738 43.4512 14.5803C43.4512 16.0867 37.7345 20.297 37.7345 20.297" stroke="white" stroke-width="3.9215" stroke-linecap="round" stroke-linejoin="round"/> -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.9215"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M37.7346,8.86362C37.7346,8.86362 43.4512,13.0738 43.4512,14.5803C43.4512,16.0867 37.7345,20.297 37.7345,20.297"/>
+</vector>

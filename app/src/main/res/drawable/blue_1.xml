@@ -1,0 +1,19 @@
+<!-- Warning: This vector is incomplete as it only contains a clip-path. 
+     It needs actual path data to render the logo. 
+     If blue_1.png is the intended resource, remove this XML file 
+     and ensure the PNG is correctly named and referenced. -->
+<vector
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:aapt="http://schemas.android.com/aapt"
+  android:width="224dp"
+  android:height="199.52dp"
+  android:viewportWidth="224"
+  android:viewportHeight="199.52"
+ >
+<group>
+<clip-path
+  android:pathData="M0 0H224V199.525H0V0Z"
+/>
+<!-- TODO: Add <path> elements here for the actual logo design -->
+</group>
+</vector>

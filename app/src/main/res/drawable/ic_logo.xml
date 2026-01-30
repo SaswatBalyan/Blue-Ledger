@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- Outer circle -->
+    <path
+        android:fillColor="@color/dark_blue"
+        android:pathData="M60,10 A50,50 0 1,1 60,110 A50,50 0 1,1 60,10 Z" />
+    
+    <!-- Water waves (bottom) -->
+    <path
+        android:fillColor="@color/medium_blue"
+        android:pathData="M25,75 Q35,70 45,75 T65,75 T85,75 T95,75 L95,85 Q85,80 75,85 T55,85 T35,85 T25,85 Z" />
+    
+    <path
+        android:fillColor="@color/medium_blue"
+        android:pathData="M30,85 Q40,80 50,85 T70,85 T90,85 L90,95 Q80,90 70,95 T50,95 T30,95 Z" />
+    
+    <!-- Plant stem -->
+    <path
+        android:fillColor="@color/dark_blue"
+        android:pathData="M58,50 L62,50 L62,70 L58,70 Z" />
+    
+    <!-- Lower leaves -->
+    <path
+        android:fillColor="@color/dark_blue"
+        android:pathData="M50,60 Q45,55 50,50 Q55,55 50,60 Z" />
+    
+    <path
+        android:fillColor="@color/dark_blue"
+        android:pathData="M70,60 Q75,55 70,50 Q65,55 70,60 Z" />
+    
+    <!-- Top leaf -->
+    <path
+        android:fillColor="@color/dark_blue"
+        android:pathData="M60,45 Q55,40 60,35 Q65,40 60,45 Z" />
+        
+</vector>

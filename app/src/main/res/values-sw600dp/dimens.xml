@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+        Responsive Text Sizing for Splash Screen - Tablet (600dp+)
+        Larger text sizes for tablet screens
+    -->
+    
+    <!-- Title text size - larger for tablets -->
+    <dimen name="title_text_size">80sp</dimen>
+    
+    <!-- Tagline text size - larger for tablets -->
+    <dimen name="tagline_text_size">38sp</dimen>
+    
+    <!-- Continue button text size - larger for tablets -->
+    <dimen name="continue_text_size">24sp</dimen>
+    
+</resources>

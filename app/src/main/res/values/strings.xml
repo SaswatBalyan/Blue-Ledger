@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BlueLedger</string>
+    
+    <!-- Splash Screen Text Content -->
+    <string name="blue_ledger">BLUE LEDGER</string>
+    <string name="minting_a_b">minting a better future</string>
+    <string name="continue_text">Continue</string>
+
+    <!-- Onboarding Screen Text Content -->
+    <string name="welcome_">Welcome,</string>
+    <string name="sign_up">Sign up</string>
+    <string name="login">Login</string>
+    <string name="change_lang">Change Language</string>
+    <string name="logo_content_description">BlueLedger App Logo</string>
+    <string name="change_lang_icon_description">Change language icon</string>
+</resources>

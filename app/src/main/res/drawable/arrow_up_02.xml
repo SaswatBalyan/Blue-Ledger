@@ -1,0 +1,23 @@
+<!-- drawable/arrow_up_02.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="15.63dp"
+    android:height="15.63dp"
+    android:viewportWidth="15.63"
+    android:viewportHeight="15.63"
+    >
+    <group>
+        <clip-path
+            android:pathData="M0,0H15.63V15.63H0V0Z"
+            />
+        <path
+            android:pathData="M0,0V15.63H15.63V0"
+            android:fillColor="#FFFFFF"
+            />
+        <path
+            android:pathData="M7.81,15.63L0,7.81L7.81,0L15.63,7.81L7.81,15.63Z"
+            android:fillColor="#0B3042"
+            />
+    </group>
+</vector>
