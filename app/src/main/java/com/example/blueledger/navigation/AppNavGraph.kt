@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -41,16 +42,20 @@ fun AppNavGraph(
             val app = (LocalContext.current.applicationContext as BlueLedgerApp)
             val factory = AppViewModelFactory(app.container.authRepository, app.container.projectsRepository)
             val authVm: AuthViewModel = viewModel(factory = factory)
+            val serverUrl = authVm.serverBaseUrl.collectAsState().value
             OnboardingScreen(
                 onLogin = { navController.navigate(NavRoute.Login.route) },
                 onSignup = { navController.navigate(NavRoute.Signup.route) },
-                onLanguageChanged = { authVm.setLanguage(it) }
+                onLanguageChanged = { authVm.setLanguage(it) },
+                serverUrl = serverUrl,
+                onServerUrlChange = { authVm.setServerBaseUrl(it) }
             )
         }
         composable(NavRoute.Login.route) {
             val app = (LocalContext.current.applicationContext as BlueLedgerApp)
             val factory = AppViewModelFactory(app.container.authRepository, app.container.projectsRepository)
             val authVm: AuthViewModel = viewModel(factory = factory)
+            val authError = authVm.authError.collectAsState().value
             LoginScreen(
                 onLogin = { email, password, remember ->
                     authVm.setRememberMe(remember)
@@ -58,20 +63,23 @@ fun AppNavGraph(
                         navController.navigate(NavRoute.Home.route) { popUpTo(NavRoute.Onboarding.route) { inclusive = true } }
                     }
                 },
-                onNavigateToSignup = { navController.navigate(NavRoute.Signup.route) }
+                onNavigateToSignup = { navController.navigate(NavRoute.Signup.route) },
+                errorMessage = authError
             )
         }
         composable(NavRoute.Signup.route) {
             val app = (LocalContext.current.applicationContext as BlueLedgerApp)
             val factory = AppViewModelFactory(app.container.authRepository, app.container.projectsRepository)
             val authVm: AuthViewModel = viewModel(factory = factory)
+            val authError = authVm.authError.collectAsState().value
             SignupScreen(
                 onSignup = { email, phone, password ->
                     authVm.signup(email, phone, password) {
                         navController.navigate(NavRoute.Home.route) { popUpTo(NavRoute.Onboarding.route) { inclusive = true } }
                     }
                 },
-                onNavigateToLogin = { navController.navigate(NavRoute.Login.route) }
+                onNavigateToLogin = { navController.navigate(NavRoute.Login.route) },
+                errorMessage = authError
             )
         }
         composable(NavRoute.Home.route) {
@@ -79,16 +87,25 @@ fun AppNavGraph(
             val factory = AppViewModelFactory(app.container.authRepository, app.container.projectsRepository)
             val authVm: AuthViewModel = viewModel(factory = factory)
             val projectsVm: ProjectsViewModel = viewModel(factory = factory)
+            val user = authVm.currentUser.collectAsState().value
+            val communityCount = authVm.communityCount.collectAsState().value
+            LaunchedEffect(user?.id) {
+                user?.id?.let { projectsVm.refresh(it) }
+            }
             val (hectares, credits) = projectsVm.totals.collectAsState().value
             val uploads = projectsVm.uploads.collectAsState().value
-            val user = authVm.currentUser.collectAsState().value
+            val uploadFeedback = projectsVm.message.collectAsState().value
             HomeRoot(
                 hectaresTotal = hectares,
                 creditsTotal = credits,
+                totalCommunities = communityCount,
                 uploads = uploads,
                 onSubmitUpload = { plotId, species, hectaresValue, lat, lng, imageUri ->
-                    projectsVm.addUpload(plotId, species, hectaresValue, lat = lat, lng = lng, imageUri = imageUri) {}
+                    val uid = user?.id ?: 0
+                    projectsVm.addUpload(uid, plotId, species, hectaresValue, lat = lat, lng = lng, imageUri = imageUri) {}
                 },
+                uploadFeedback = uploadFeedback,
+                onUploadFeedbackShown = { projectsVm.consumeMessage() },
                 currentEmail = user?.email,
                 currentPhone = user?.phone,
                 currentUsername = user?.username,

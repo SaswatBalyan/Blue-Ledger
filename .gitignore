@@ -13,3 +13,9 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Backend (server/) runtime artifacts
+server/venv/
+server/__pycache__/
+server/*.db
+server/*.db-journal

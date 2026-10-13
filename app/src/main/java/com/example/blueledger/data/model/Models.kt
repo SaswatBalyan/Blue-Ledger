@@ -4,6 +4,7 @@ package com.example.blueledger.data.model
  * Core data models used by the app.
  */
 data class User(
+    val id: Long = 0,
     val email: String,
     val phone: String = "",
     val username: String = "",

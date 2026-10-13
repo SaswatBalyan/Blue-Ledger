@@ -31,6 +31,7 @@ class DataStoreManager(
         val userJson: Preferences.Key<String> = stringPreferencesKey("user_json")
         val uploadsJson: Preferences.Key<String> = stringPreferencesKey("uploads_json")
         val language: Preferences.Key<String> = stringPreferencesKey("language")
+        val serverBaseUrl: Preferences.Key<String> = stringPreferencesKey("server_base_url")
     }
 
     fun rememberMeFlow(): Flow<Boolean> = context.dataStore.data
@@ -65,6 +66,14 @@ class DataStoreManager(
 
     suspend fun setLanguage(lang: String) = withContext(ioDispatcher) {
         context.dataStore.edit { it[Keys.language] = lang }
+    }
+
+    fun serverBaseUrlFlow(): Flow<String> = context.dataStore.data
+        .catch { e -> if (e is IOException) emit(emptyPreferences()) else throw e }
+        .map { it[Keys.serverBaseUrl] ?: "" }
+
+    suspend fun setServerBaseUrl(url: String) = withContext(ioDispatcher) {
+        context.dataStore.edit { it[Keys.serverBaseUrl] = url }
     }
 }
 

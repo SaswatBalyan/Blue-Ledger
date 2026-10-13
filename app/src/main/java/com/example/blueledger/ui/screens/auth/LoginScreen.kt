@@ -53,6 +53,7 @@ val Rubik = FontFamily(
 fun LoginScreen(
     onLogin: (email: String, password: String, rememberMe: Boolean) -> Unit,
     onNavigateToSignup: () -> Unit,
+    errorMessage: String? = null,
     modifier: Modifier = Modifier
 ) {
     val (email, setEmail) = remember { mutableStateOf("") }
@@ -231,7 +232,15 @@ fun LoginScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.weight(1f)) 
+            Spacer(modifier = Modifier.weight(1f))
+
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage,
+                    style = TextStyle(fontSize = 13.sp, fontFamily = Rubik, color = Color(0xFFB00020)),
+                    modifier = Modifier.padding(bottom = 12.dp)
+                )
+            }
 
             Button(
                 onClick = { onLogin(email, password, rememberMe) },

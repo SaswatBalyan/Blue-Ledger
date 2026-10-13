@@ -64,7 +64,13 @@ fun DashboardTab(totalHectares: Double, totalCredits: Int, totalCommunities: Int
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UploadTab(onSubmitMock: () -> Unit = {}, onSubmit: (plotId: String, species: String, hectares: Double, lat: Double, lng: Double, imageUri: String?) -> Unit, modifier: Modifier = Modifier) {
+fun UploadTab(
+    onSubmitMock: () -> Unit = {},
+    onSubmit: (plotId: String, species: String, hectares: Double, lat: Double, lng: Double, imageUri: String?) -> Unit,
+    feedback: String? = null,
+    onFeedbackShown: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
     val (plotId, setPlotId) = remember { mutableStateOf("") }
     val speciesList = listOf("Rhizophora", "Avicennia", "Bruguiera")
     val (expanded, setExpanded) = remember { mutableStateOf(false) }
@@ -76,6 +82,12 @@ fun UploadTab(onSubmitMock: () -> Unit = {}, onSubmit: (plotId: String, species:
         setImageUri(uri)
     }
     val snack = remember { SnackbarHostState() }
+    LaunchedEffect(feedback) {
+        if (feedback != null) {
+            snack.showSnackbar(feedback)
+            onFeedbackShown()
+        }
+    }
     val permissionLauncher = rememberLauncherForActivityResult(RequestMultiplePermissions()) { _ ->
         // After user responds, user can press Submit again.
     }
@@ -88,6 +100,7 @@ fun UploadTab(onSubmitMock: () -> Unit = {}, onSubmit: (plotId: String, species:
         modifier = modifier.fillMaxSize().padding(16.dp),
         verticalArrangement = Arrangement.Top
     ) {
+        SnackbarHost(snack)
         Text("Upload Project", style = MaterialTheme.typography.headlineSmall)
         Spacer(Modifier.height(12.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {

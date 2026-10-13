@@ -134,6 +134,7 @@ fun CustomStyledTextField(
 fun SignupScreen(
     onSignup: (email: String, phone: String, password: String) -> Unit,
     onNavigateToLogin: () -> Unit,
+    errorMessage: String? = null,
     modifier: Modifier = Modifier
 ) {
     val (email, setEmail) = remember { mutableStateOf("") }
@@ -249,6 +250,14 @@ fun SignupScreen(
             )
 
             Spacer(Modifier.height((70f * scaleFactor).dp))
+
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage,
+                    style = TextStyle(fontSize = (22f * scaleFactor).sp, color = Color(0xFFB00020), fontFamily = rubikFontFamily),
+                    modifier = Modifier.padding(bottom = (16f * scaleFactor).dp)
+                )
+            }
 
             Button(
                 onClick = { onSignup(email, phone, password) },

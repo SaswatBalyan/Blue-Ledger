@@ -19,11 +19,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -44,6 +47,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -66,7 +70,9 @@ fun OnboardingScreen(
     modifier: Modifier = Modifier, // Modifier is now the first optional parameter
     onLogin: () -> Unit,
     onSignup: () -> Unit,
-    onLanguageChanged: (String) -> Unit = {}
+    onLanguageChanged: (String) -> Unit = {},
+    serverUrl: String = "",
+    onServerUrlChange: (String) -> Unit = {},
 ) {
     val primaryTextColor = Color(0xFF0B3042)
     val buttonTextColor = Color(0xFFF8F8FF)
@@ -261,6 +267,38 @@ fun OnboardingScreen(
                 }
             }
             Spacer(Modifier.weight(1f))
+        }
+
+        // Demo-only: lets the phone be pointed at the laptop's LAN IP for the live database
+        // demo without rebuilding the app. Overlaid independently of the Column above so it
+        // can't disturb that layout's hand-tuned spacing. statusBarsPadding() is required
+        // because MainActivity calls enableEdgeToEdge() -- without it this row draws partly
+        // behind the status bar and is nearly untappable.
+        Row(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .statusBarsPadding()
+                .padding(top = 12.dp)
+                .fillMaxWidth(0.88f)
+                .heightIn(min = 48.dp)
+                .background(Color.White.copy(alpha = 0.95f), RoundedCornerShape(10.dp))
+                .padding(horizontal = 14.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Server:",
+                fontFamily = Rubik,
+                fontSize = 14.sp,
+                color = primaryTextColor
+            )
+            Spacer(Modifier.width(8.dp))
+            BasicTextField(
+                value = serverUrl,
+                onValueChange = onServerUrlChange,
+                textStyle = TextStyle(fontSize = 14.sp, fontFamily = Rubik, color = primaryTextColor),
+                singleLine = true,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }

@@ -22,8 +22,11 @@ import androidx.compose.ui.Modifier
 fun HomeRoot(
     hectaresTotal: Double,
     creditsTotal: Int,
+    totalCommunities: Int,
     uploads: List<com.example.blueledger.data.model.UploadProject>,
     onSubmitUpload: (plotId: String, species: String, hectares: Double, lat: Double, lng: Double, imageUri: String?) -> Unit,
+    uploadFeedback: String?,
+    onUploadFeedbackShown: () -> Unit,
     currentEmail: String?,
     currentPhone: String?,
     currentUsername: String?,
@@ -50,8 +53,14 @@ fun HomeRoot(
         }
     ) { padding ->
         when (selected) {
-            HomeTab.Dashboard -> DashboardTab(hectaresTotal, creditsTotal, uploads.size, modifier = Modifier)
-            HomeTab.Upload -> UploadTab(onSubmitMock = { /* deprecated */ }, onSubmit = onSubmitUpload, modifier = Modifier)
+            HomeTab.Dashboard -> DashboardTab(hectaresTotal, creditsTotal, totalCommunities, modifier = Modifier)
+            HomeTab.Upload -> UploadTab(
+                onSubmitMock = { /* deprecated */ },
+                onSubmit = onSubmitUpload,
+                feedback = uploadFeedback,
+                onFeedbackShown = onUploadFeedbackShown,
+                modifier = Modifier
+            )
             HomeTab.Wallet -> WalletTab(creditsTotal, hectaresTotal, uploads, modifier = Modifier)
             HomeTab.Profile -> ProfileTab(
                 initialEmail = currentEmail.orEmpty(),
